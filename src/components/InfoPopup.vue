@@ -21,7 +21,7 @@ const props = defineProps({
                 landscape: {{tile.landscape}}
             </div>
             <div class="info-popup-signal">
-                signal: {{tile.signal}}
+                signal: {{tile.signal}}%
             </div>
         </div>
     </div>

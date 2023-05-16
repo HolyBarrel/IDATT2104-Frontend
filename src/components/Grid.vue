@@ -3,6 +3,7 @@ import "@/assets/grid.css";
 import socket from "@/utils/Connection.js"
 import Tile from "./Tile.vue";
 import InfoPopup from "./InfoPopup.vue";
+import MapService from "@/utils/MapService.js";
 import { ref, onMounted, watch } from 'vue'
 
 const tiles = ref([]);
@@ -17,18 +18,44 @@ let tileChanges = [];
 
 onMounted(async () => {
   //Create 100x100 grid
-  for (let i = 0; i < 100; i++) {
-    tiles.value.push([]);
-    for (let j = 0; j < 100; j++) {
-      tiles.value[i].push({
-        x: i,
-        y: j,
-        signal: 0,
-        landscape: "field",
-        building: null,
-      });
+  async function fillTiles() {
+    for (let i = 0; i < 100; i++) {
+      tiles.value.push([]);
+      for (let j = 0; j < 100; j++) {
+        tiles.value[i].push({
+          x: i,
+          y: j,
+          signal: 0,
+          landscape: "field",
+          building: null,
+        });
+      }
     }
   }
+
+  await fillTiles();
+
+  //Send initial tile data to server
+  async function sendTiles() {
+    for (const row of tiles.value) {
+      for (const tile of row) {
+        tileChanges.push({
+          x: tile.x,
+          y: tile.y,
+          landscape: tile.landscape,
+          building: tile.building,
+        });
+      }
+    }
+
+    socket.onopen = async () => {
+      console.log("Sending initial tile data to server");
+      await socket.send(JSON.stringify(tileChanges));
+      tileChanges = [];
+    }
+  }
+
+  await sendTiles();
 
   console.log(tiles.value);
 });
@@ -58,7 +85,7 @@ function tileClick(x, y, forced) {
   //If mouse is not down, return
   if (!mouseDown.value && !forced) return;
 
-  console.log("Tile clicked: " + x + ", " + y);
+  //console.log("Tile clicked: " + x + ", " + y);
 
   if (objectToPlace.value == "tower") {
     tiles.value[x][y].building = "tower";
@@ -92,6 +119,7 @@ function tileClick(x, y, forced) {
   //console.log(tileChanges);
 }
 
+//Send tile changes to server with websocket
 async function mouseUp() {
   mouseDown.value = false;
 
@@ -103,6 +131,16 @@ async function mouseUp() {
     tileChanges = [];
   }
 }
+
+//Listen for tile changes from server
+socket.addEventListener("message", (event) => {
+  const data = JSON.parse(event.data);
+
+  for (let i = 0; i < data.length; i++) {
+    tiles.value[data[i].x][data[i].y].signal = data[i].power;
+  }
+});
+
 </script>
 
 <template>

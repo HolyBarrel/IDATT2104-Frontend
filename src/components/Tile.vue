@@ -9,6 +9,9 @@ const props = defineProps({
 
 <template>
     <div class="tile" :class="tile.landscape">
+        <div class="tile-signal-overlay" v-if="tile.signal && !tile.building">
+            <div class="tile-signal" :style="{width: tile.signal + '%', height: tile.signal + '%'}"></div>
+        </div>
         <div class="tile-content">
             <div class="tile-building" v-if="tile.building">
                 <font-awesome-icon icon="tower-cell" v-if="tile.building == 'tower'"/>
