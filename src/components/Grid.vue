@@ -56,7 +56,7 @@ async function sendTiles() {
 
     socket.onopen = async () => {
       console.log("Sending initial tile data to server");
-      await socket.send("#" + JSON.stringify(tileChanges));
+      await socket.send(JSON.stringify(tileChanges));
       tileChanges = [];
     }
 }
@@ -247,6 +247,9 @@ function paintBucket(x, y, originalLandscape) {
         Download map
         <font-awesome-icon icon="download" />
       </button>
+    </div>
+    <div class="menu-handle">
+      <font-awesome-icon icon="angle-double-left" />
     </div>
   </div>
   <div class="grid" @mousedown="mouseDown = true" @mouseup="mouseUp" @mouseleave="mouseUp">
