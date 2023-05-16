@@ -79,3 +79,20 @@
 .menu .menu-item button:hover {
     background-color: rgba(0, 0, 0, 0.6);
 }
+
+.menu .menu-item .network-slider {
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: #fff;
+    padding: 5px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}

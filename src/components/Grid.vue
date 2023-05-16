@@ -3,14 +3,16 @@ import "@/assets/grid.css";
 import socket from "@/utils/Connection.js"
 import Tile from "./Tile.vue";
 import InfoPopup from "./InfoPopup.vue";
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 
 const tiles = ref([]);
 const selectedTile = ref(null);
 const paintBrush = ref("water");
 const objectToPlace = ref(null);
-const mouseDown = ref(false);
+const network = ref("5G");
+const networkSlider = ref(3);
 
+const mouseDown = ref(false);
 let tileChanges = [];
 
 onMounted(async () => {
@@ -29,6 +31,18 @@ onMounted(async () => {
   }
 
   console.log(tiles.value);
+});
+
+watch(networkSlider, (value) => {
+  if (value == 1) {
+    network.value = "3G";
+  } else if (value == 2) {
+    network.value = "4G";
+  } else if (value == 3) {
+    network.value = "5G";
+  }
+
+  socket.send("?" + network.value);
 });
 
 //On mouse position change, update mouse icon position
@@ -75,13 +89,13 @@ function tileClick(x, y, forced) {
     mouseUp();
   }
 
-  console.log(tileChanges);
+  //console.log(tileChanges);
 }
 
 async function mouseUp() {
   mouseDown.value = false;
 
-  console.log("Trying to send tile changes to server");
+  //console.log("Trying to send tile changes to server");
   
   if (tileChanges.length > 0) {
     console.log("Sending tile changes to server");
@@ -98,6 +112,12 @@ async function mouseUp() {
     <font-awesome-icon icon="eraser" v-if="objectToPlace == 'eraser'"/>
   </div>
   <div class="menu">
+    <div class="menu-item">
+      <div class="network-slider">
+        <div class="network-slider-label">Network: {{network}}</div>
+        <input type="range" min="1" max="3" v-model="networkSlider" />
+      </div>
+    </div>
     <div class="menu-item">
       <select v-model="paintBrush">
         <option value="water">Water</option>
@@ -122,7 +142,7 @@ async function mouseUp() {
       </button>
     </div>
   </div>
-  <div class="grid" @mousedown="mouseDown = true" @mouseup="mouseDown = false" >
+  <div class="grid" @mousedown="mouseDown = true" @mouseup="mouseUp" @mouseleave="mouseUp">
     <div v-for="row in tiles" class="row">
       <Tile v-for="tile in row" :tile="tile" @mouseover="tileClick(tile.x, tile.y, false)" @click="tileClick(tile.x, tile.y, true)" @contextmenu.prevent="selectedTile = tile" />
     </div>
