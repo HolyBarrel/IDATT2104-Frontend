@@ -13,6 +13,7 @@ const objectToPlace = ref(null);
 const network = ref("5G");
 const networkSlider = ref(3);
 const file = ref(null);
+const displayWelcome = ref(true);
 
 const mouseDown = ref(false);
 let tileChanges = [];
@@ -258,5 +259,22 @@ function paintBucket(x, y, originalLandscape) {
     </div>
   </div>
   <InfoPopup v-if="tiles.length > 0" :tile="selectedTile" />
+  <div class="welcome-box" v-if="displayWelcome" @click="displayWelcome = false">
+    <div class="welcome-box-content">
+      <h1>Welcome to the map editor!</h1>
+      <p>
+        Here you can create your own maps for the game. You can place cell towers, signal extenders, and paint the landscape.
+      </p>
+      <p>
+        After each edits, the map is sent to the server, where it calculates the signal strength for each tile. This can take a few seconds.
+      </p>
+      <p>
+        You can right-click on a tile to see detailed information about it.
+      </p>
+      <p>
+        Have fun!
+      </p>
+    </div>
+  </div>
   <a id="downloadAnchor" style="display:none"></a>
 </template>

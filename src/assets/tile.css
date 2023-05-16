@@ -42,18 +42,18 @@
 
 .tile-signal-overlay {
     position: absolute;
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     background-color: transparent;
     z-index: 100;
     pointer-events: none;
-    opacity: 0.7;
+    opacity: 0.4;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .tile-signal {
-    background-color: #54478C;
-    border-radius: 50%;
+    background-color: #F29E4C;
+    box-shadow: 0 0 5px #333;
 }
