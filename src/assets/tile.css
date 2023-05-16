@@ -1,8 +1,8 @@
 .tile {
     position: relative;
     z-index: 1;
-    height: 25px;
-    width: 25px;
+    height: 20px;
+    width: 20px;
     border: 1px dashed #ababab;
     text-align: center;
     cursor: pointer;
@@ -37,13 +37,13 @@
 }
 
 .forest {
-    background-color: #16DB93;
+    background-color: #83E377;
 }
 
 .tile-signal-overlay {
     position: absolute;
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     background-color: transparent;
     z-index: 100;
     pointer-events: none;
@@ -54,6 +54,6 @@
 }
 
 .tile-signal {
-    background-color: #F29E4C;
+    background-color: #54478C;
     border-radius: 50%;
 }

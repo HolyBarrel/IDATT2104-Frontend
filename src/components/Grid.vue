@@ -37,7 +37,12 @@ onMounted(async () => {
   await fillTiles();
 
   //Send initial tile data to server
-  async function sendTiles() {
+  await sendTiles();
+
+  console.log(tiles.value);
+});
+
+async function sendTiles() {
     for (const row of tiles.value) {
       for (const tile of row) {
         tileChanges.push({
@@ -51,15 +56,10 @@ onMounted(async () => {
 
     socket.onopen = async () => {
       console.log("Sending initial tile data to server");
-      await socket.send(JSON.stringify(tileChanges));
+      await socket.send("#" + JSON.stringify(tileChanges));
       tileChanges = [];
     }
-  }
-
-  await sendTiles();
-
-  console.log(tiles.value);
-});
+}
 
 watch(networkSlider, (value) => {
   if (value == 1) {
@@ -96,6 +96,10 @@ function tileClick(x, y, forced) {
     objectToPlace.value = null;
   } else if (objectToPlace.value == "eraser") {
     tiles.value[x][y].building = null;
+    objectToPlace.value = null;
+  } else if (objectToPlace.value == "paint") {
+    paintBucket(x, y, tiles.value[x][y].landscape);
+    mouseUp(); // send changes to the server
     objectToPlace.value = null;
   } else {
     tiles.value[x][y].landscape = paintBrush.value;
@@ -162,12 +166,35 @@ async function uploadMapData() {
   });
 }
 
+function paintBucket(x, y, originalLandscape) {
+  // If the tile is out of the grid or already painted, stop recursion
+  if (x < 0 || y < 0 || x >= tiles.value.length || y >= tiles.value[0].length || tiles.value[x][y].landscape != originalLandscape) {
+    return;
+  }
+
+  tiles.value[x][y].landscape = paintBrush.value;
+
+  tileChanges.push({
+    x: x,
+    y: y,
+    landscape: tiles.value[x][y].landscape,
+    building: tiles.value[x][y].building,
+  });
+
+  // Check tiles above, below, left, and right
+  paintBucket(x - 1, y, originalLandscape);
+  paintBucket(x + 1, y, originalLandscape);
+  paintBucket(x, y - 1, originalLandscape);
+  paintBucket(x, y + 1, originalLandscape);
+}
+
 </script>
 
 <template>
   <div class="mouse-icon" v-if="objectToPlace">
     <font-awesome-icon icon="tower-cell" v-if="objectToPlace == 'tower'"/>
     <font-awesome-icon icon="satellite-dish" v-if="objectToPlace == 'extender'"/>
+    <font-awesome-icon icon="fill-drip" v-if="objectToPlace == 'paint'"/>
     <font-awesome-icon icon="eraser" v-if="objectToPlace == 'eraser'"/>
   </div>
   <div class="menu">
@@ -194,6 +221,10 @@ async function uploadMapData() {
       <button @click="objectToPlace = 'extender'">
         Place signal extender
         <font-awesome-icon icon="satellite-dish" />
+      </button>
+      <button @click="objectToPlace = 'paint'">
+        Paint bucket
+        <font-awesome-icon icon="fill-drip" />
       </button>
       <button @click="objectToPlace = 'eraser'">
         Erase
