@@ -44,6 +44,8 @@ function tileClick(x, y, forced) {
   //If mouse is not down, return
   if (!mouseDown.value && !forced) return;
 
+  console.log("Tile clicked: " + x + ", " + y);
+
   if (objectToPlace.value == "tower") {
     tiles.value[x][y].building = "tower";
     objectToPlace.value = null;
@@ -57,20 +59,33 @@ function tileClick(x, y, forced) {
     tiles.value[x][y].landscape = paintBrush.value;
   }
 
+  //If tile is already in tileChanges, don't add it again
+  for (let i = 0; i < tileChanges.length; i++) {
+    if (tileChanges[i].x == x && tileChanges[i].y == y) return;
+  }
+
   tileChanges.push({
     x: x,
     y: y,
     landscape: tiles.value[x][y].landscape,
     building: tiles.value[x][y].building,
   });
+
+  if (!mouseDown.value) {
+    mouseUp();
+  }
+
+  console.log(tileChanges);
 }
 
-function mouseUp() {
+async function mouseUp() {
   mouseDown.value = false;
+
+  console.log("Trying to send tile changes to server");
   
   if (tileChanges.length > 0) {
     console.log("Sending tile changes to server");
-    socket.send(JSON.stringify(tileChanges));
+    await socket.send(JSON.stringify(tileChanges));
     tileChanges = [];
   }
 }
@@ -107,7 +122,7 @@ function mouseUp() {
       </button>
     </div>
   </div>
-  <div class="grid" @mousedown="mouseDown = true" @mouseup="mouseUp">
+  <div class="grid" @mousedown="mouseDown = true" @mouseup="mouseDown = false" >
     <div v-for="row in tiles" class="row">
       <Tile v-for="tile in row" :tile="tile" @mouseover="tileClick(tile.x, tile.y, false)" @click="tileClick(tile.x, tile.y, true)" @contextmenu.prevent="selectedTile = tile" />
     </div>
