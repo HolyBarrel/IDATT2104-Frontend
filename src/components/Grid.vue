@@ -12,6 +12,7 @@ const paintBrush = ref("water");
 const objectToPlace = ref(null);
 const network = ref("5G");
 const networkSlider = ref(3);
+const file = ref(null);
 
 const mouseDown = ref(false);
 let tileChanges = [];
@@ -141,6 +142,26 @@ socket.addEventListener("message", (event) => {
   }
 });
 
+//Upload map-data
+async function uploadMapData() {
+  //Click on hidden file input
+  const fileInput = document.querySelector("#file-input");
+  fileInput.click();
+
+  //When file is selected, set tiles to file data
+  fileInput.addEventListener("change", async (e) => {
+    file.value = e.target.files[0];
+    const reader = new FileReader();
+    reader.readAsText(file.value, "UTF-8");
+    reader.onload = async (e) => {
+      const mapData = JSON.parse(e.target.result);
+      tiles.value = mapData;
+      console.log("Map data uploaded");
+      await sendTiles();
+    };
+  });
+}
+
 </script>
 
 <template>
@@ -179,6 +200,23 @@ socket.addEventListener("message", (event) => {
         <font-awesome-icon icon="eraser" />
       </button>
     </div>
+    <div class="menu-item">
+      <button @click="uploadMapData">
+        Upload map
+        <font-awesome-icon icon="upload" />
+        <input 
+        type="file" 
+        id="file-input" 
+        style="display:none" 
+        ref="file"
+        accept="application/json"
+        />
+      </button>
+      <button @click="MapService.downloadMapData(tiles)">
+        Download map
+        <font-awesome-icon icon="download" />
+      </button>
+    </div>
   </div>
   <div class="grid" @mousedown="mouseDown = true" @mouseup="mouseUp" @mouseleave="mouseUp">
     <div v-for="row in tiles" class="row">
@@ -186,4 +224,5 @@ socket.addEventListener("message", (event) => {
     </div>
   </div>
   <InfoPopup v-if="tiles.length > 0" :tile="selectedTile" />
+  <a id="downloadAnchor" style="display:none"></a>
 </template>
