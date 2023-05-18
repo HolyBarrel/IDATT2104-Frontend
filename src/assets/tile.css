@@ -57,4 +57,5 @@
     background-color: #F29E4C;
     box-shadow: 0 0 5px #333;
     transition: ease-in-out 0.2s;
+    border-radius: 30%;
 }

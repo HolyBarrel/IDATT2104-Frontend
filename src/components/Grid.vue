@@ -44,6 +44,8 @@ onMounted(async () => {
 });
 
 async function sendTiles() {
+    tileChanges = [];
+
     for (const row of tiles.value) {
       for (const tile of row) {
         tileChanges.push({

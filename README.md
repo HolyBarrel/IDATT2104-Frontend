@@ -84,4 +84,8 @@ fewfew
 
 ### Hvordan kjøre tester
 
-greojgntoeg
+Man kan kjøre tester i tjeneren ved kommando:
+
+```plaintext
+cargo test
+```

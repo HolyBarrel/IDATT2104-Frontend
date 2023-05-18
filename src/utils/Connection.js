@@ -6,8 +6,8 @@ socket.onopen = () => {
 }
 
 socket.onmessage = (event) => {
-  const message = event.data
-  console.log('Received message:', JSON.parse(message))
+  //const message = event.data
+  //console.log('Received message:', JSON.parse(message))
 }
 
 socket.onclose = () => {
