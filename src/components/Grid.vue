@@ -43,7 +43,7 @@ onMounted(async () => {
       await sendTiles();
   }
 
-  console.log(tiles.value);
+  //console.log(tiles.value);
 
   //Upload map-file
   fileInput.value.addEventListener("change", async (e) => {
@@ -75,7 +75,7 @@ async function sendTiles() {
     }
 
     console.log("Sending initial tile data to server");
-    console.log(tileChanges);
+    //console.log(tileChanges);
     await socket.send(JSON.stringify(tileChanges));
     tileChanges = [];
 }

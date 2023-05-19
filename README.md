@@ -12,7 +12,7 @@ Med den kontinuerlige utviklingen av kommunikasjonsteknologi, spesielt innen tr�
 * Vi har utviklet en "sandbox" som gir brukeren muligheten til å skape og tilpasse sitt helt eget terreng. Det er også mulig å laste ned kartet som en JSON-fil, som man kan dele med andre. Alle oppdateringer av terrenget blir sendt til serveren, hvor eventuelle nye beregninger for signal-spredningen blir utført.
 * "Sandboxen" er delt inn i felt ("tiles"), hvor hvert felt representerer 40x40 meter i virkeligheten. Alle beregningene samsvarer med hvordan det faktisk ville ha vært i den virkelige verden.
 * Definere signalstyrke for signaltårn
-* Det er mulig å endre hvilket nettverk signaltårnene skal sende ut. Man kan bytte mellom 3G, 4G og 5G. Hvordan signalstyrken sprer seg for hver av disse nettverkene samsvarer med faktiske data. Det finnes varierte kilder til spredningen for hvert av nettverkene, men vi har tatt utgangspunkt i følgende maksdistanser for hver av dem:
+* Det er mulig å endre hvilket nettverk signaltårnene skal sende ut. Man kan bytte mellom 3G, 4G og 5G. Hvordan signalstyrken sprer seg for hver av disse nettverkene samsvarer med faktiske data. Det finnes varierte kilder til spredningen for hvert av nettverkene, men vi har tatt utgangspunkt i følgende maks-distanser for hver av dem:
 * 3G - 10km
 * 4G - 2km
 * 5G - 500m
@@ -46,7 +46,7 @@ TNSS er implementert med tiltenkt funksjonalitet. Under følger en liste av pote
 
 Algoritmen som overholder spredning av signal fra kilde er basert på **bredde-først-søk (BFS).**
 
-I koden heter metoden som kalles ‘_spread\_signal()_’. Funksjonen starter med en kilde-node, som er et punkt definert på kartet der signalet kommer fra. Derfra sprer signalet seg til kildens nabo-noder, og videre radielt utover i kartet. 
+I koden heter metoden som kalles ‘_spread\_signal()_’. Funksjonen starter med en kilde-node, som er et punkt definert på kartet der signalet kommer fra. Derfra sprer signalet seg til kildens nabo-noder, og så videre radielt utover i kartet. 
 
 Først kjøres algoritmen for signaltårn. Deretter regnes signalet spredt videre fra signalforsterkere. Denne logikken sikrer korrekt funksjonalitet for forsterkere. 
 
@@ -72,15 +72,15 @@ Hvis det er en endring i en rute innenfor brettet, vil endringen sendes over web
 ### Eksterne avhengigheter
 
 * Tungstenite: [https://docs.rs/tungstenite/latest/tungstenite/](https://docs.rs/tungstenite/latest/tungstenite/) 
-* Tungstenite er en kraftig og enkel WebSocket-bibliotek som muliggjør "full-duplex" kommunikasjon mellom klienter og serveren. Biblioteket brukes til å åpne en port som lytter etter WebSocket-forespørsler fra klienter og etablerer en kommunikasjonskanal.
+* Tungstenite er et enkelt WebSocket-bibliotek som støtter bruk av “full-duplex”-kommunikasjon mellom klienter og server. Biblioteket brukes for å åpne en port som lytter etter WebSocket-forespørsler fra klienter og etablerer en kommunikasjonskanal.
 * Serde: [https://serde.rs/](https://serde.rs/)
-* Serde er et rammeverk som brukes til effektiv og generisk serialisering og deserialisering av Rust-datastrukturer. I dette tilfellet brukes Serde til å serialisere en datastruktur kalt "Node" og konvertere den til et JSON-objekt.
+* Serde er et rammeverk som brukes til effektiv serialisering og deserialisering av Rust-datastrukturer. I TNSS brukes Serde til å serialisere datastrukturen "Node" og konverterer dette til et JSON-objekt.
 * Serde\_json: [https://docs.rs/serde_json/latest/serde_json/](https://docs.rs/serde_json/latest/serde_json/)
-* Serde\_json er en utvidelsesbibliotek for Serde som konverterer serialiserte objekter til JSON-objekter. JSON-objekter brukes til sikker og effektiv kommunikasjon mellom servere og klienter. Ved å bruke Serde\_json kan man enkelt håndtere serialisering og deserialisering av data i JSON-format, og dermed oppnå pålitelig datautveksling mellom klienter og tjeneren.
+* Serde\_json er en utvidelsesbibliotek for Serde som brukes for a transformere serialiserte objekter til JSON-objekter. JSON-objektene bidrar til sikker og effektiv kommunikasjon mellom server og klient. 
 * Queues: [https://docs.rs/queues/latest/queues/](https://docs.rs/queues/latest/queues/)
-* Queues gir en rekke effektive FIFO-kødatastrukturer for bruk i bibliotekene dine. Disse er alle implementert på toppen av rusts Vector-type. Køer brukes i algoritmer som regner ut signal styrke.
+* Queues gir en rekke effektive FIFO-kødatastrukturer. Disse er alle implementert i tillegg til rusts Vector-type. Køer brukes i algoritmen som sprer signalet utover kartet.
 * Fontawesome: [https://fontawesome.com/](https://fontawesome.com/)
-* Font Awesome er Internetts ikonbibliotek og verktøysett, brukt av millioner av designere, utviklere og innholdsskapere. Den er brukt for å generere SVG ikoner som forbedre UX av applikasjon.
+* Font Awesome er et ikonbibliotek. Den er brukt for å generere SVG-ikoner som forbedrer UX av applikasjon.
 
 ### Installasjonsinstruksjoner
 
@@ -110,7 +110,7 @@ cargo run
 
 #### Klienten:
 
-For å kjøre tjener applikasjon må man installere enten “npm”. Nedlasting linken: [https://nodejs.org/en/download](https://nodejs.org/en/download) 
+For å kjøre klienten må man installere [Node.js](https://nodejs.org/en/download)
 
 #### HTTPS:
 
