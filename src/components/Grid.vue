@@ -39,7 +39,9 @@ onMounted(async () => {
   await fillTiles();
 
   //Send initial tile data to server
-  await sendTiles();
+  socket.onopen = async () => {
+      await sendTiles();
+  }
 
   console.log(tiles.value);
 
@@ -72,11 +74,10 @@ async function sendTiles() {
       }
     }
 
-    socket.onopen = async () => {
-      console.log("Sending initial tile data to server");
-      await socket.send(JSON.stringify(tileChanges));
-      tileChanges = [];
-    }
+    console.log("Sending initial tile data to server");
+    console.log(tileChanges);
+    await socket.send(JSON.stringify(tileChanges));
+    tileChanges = [];
 }
 
 //Watch for changes in network slider
@@ -94,6 +95,7 @@ watch(networkSlider, async (value) => {
   await sendNetwork();
 });
 
+//Send network change to server
 async function sendNetwork() {
   console.log("Sending network change to server");
 
@@ -111,6 +113,7 @@ window.addEventListener("mousemove", (e) => {
   mouseIcon.style.top = e.clientY - 20 + "px";
 });
 
+//When tile is clicked, place object
 function tileClick(x, y, forced) {
   //If mouse is not down, return
   if (!mouseDown.value && !forced) return;
@@ -180,13 +183,15 @@ socket.addEventListener("message", (event) => {
   }
 });
 
+//Upload map data
 async function uploadMapData() {
   //Click on hidden file input
   fileInput.value.click();
 }
 
+//Paint bucket tool
 function paintBucket(x, y, originalLandscape) {
-  // If the tile is out of the grid or already painted, stop recursion
+  // Stop recursion
   if (x < 0 || y < 0 || x >= tiles.value.length || y >= tiles.value[0].length || tiles.value[x][y].landscape != originalLandscape) {
     return;
   }
@@ -206,7 +211,6 @@ function paintBucket(x, y, originalLandscape) {
   paintBucket(x, y - 1, originalLandscape);
   paintBucket(x, y + 1, originalLandscape);
 }
-
 </script>
 
 <template>
