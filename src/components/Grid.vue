@@ -104,6 +104,9 @@ function tileClick(x, y, forced) {
     paintBucket(x, y, tiles.value[x][y].landscape);
     mouseUp(); // send changes to the server
     objectToPlace.value = null;
+  } else if (objectToPlace.value == "detector") {
+    tiles.value[x][y].building = "detector";
+    objectToPlace.value = null;
   } else {
     tiles.value[x][y].landscape = paintBrush.value;
   }
@@ -143,6 +146,8 @@ async function mouseUp() {
 //Listen for tile changes from server
 socket.addEventListener("message", (event) => {
   const data = JSON.parse(event.data);
+
+  //console.log(data);
 
   for (let i = 0; i < data.length; i++) {
     tiles.value[data[i].x][data[i].y].signal = data[i].power;
@@ -199,6 +204,7 @@ function paintBucket(x, y, originalLandscape) {
     <font-awesome-icon icon="satellite-dish" v-if="objectToPlace == 'extender'"/>
     <font-awesome-icon icon="fill-drip" v-if="objectToPlace == 'paint'"/>
     <font-awesome-icon icon="eraser" v-if="objectToPlace == 'eraser'"/>
+    <font-awesome-icon icon="search-location" v-if="objectToPlace == 'detector'"/>
   </div>
   <div class="menu">
     <div class="menu-item">
@@ -224,6 +230,10 @@ function paintBucket(x, y, originalLandscape) {
       <button @click="objectToPlace = 'extender'">
         Place signal extender
         <font-awesome-icon icon="satellite-dish" />
+      </button>
+      <button @click="objectToPlace = 'detector'">
+        Place signal detector
+        <font-awesome-icon icon="search-location" />
       </button>
       <button @click="objectToPlace = 'paint'">
         Paint bucket

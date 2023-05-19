@@ -16,6 +16,9 @@ const props = defineProps({
             <div class="tile-building" v-if="tile.building">
                 <font-awesome-icon icon="tower-cell" v-if="tile.building == 'tower'"/>
                 <font-awesome-icon icon="satellite-dish" v-if="tile.building == 'extender'"/>
+                <p v-if="tile.building == 'detector'" class="tile-signal-text">
+                    {{tile.signal}}
+                </p>
             </div>
         </div>
     </div>
