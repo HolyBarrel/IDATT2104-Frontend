@@ -12,10 +12,11 @@ const paintBrush = ref("water");
 const objectToPlace = ref(null);
 const network = ref("5G");
 const networkSlider = ref(3);
-const file = ref(null);
 const displayWelcome = ref(true);
 
 const mouseDown = ref(false);
+let file = null;
+const fileInput = ref(null);
 let tileChanges = [];
 
 onMounted(async () => {
@@ -41,8 +42,22 @@ onMounted(async () => {
   await sendTiles();
 
   console.log(tiles.value);
+
+  //Upload map-file
+  fileInput.value.addEventListener("change", async (e) => {
+    file = e.target.files[0];
+    const reader = new FileReader();
+    reader.readAsText(fileInput.value.files[0]);
+    reader.onload = async (e) => {
+      const mapData = JSON.parse(e.target.result);
+      tiles.value = mapData;
+      console.log("Map data uploaded");
+      await sendTiles();
+    };
+  });
 });
 
+//Send tiles to server
 async function sendTiles() {
     tileChanges = [];
 
@@ -64,7 +79,8 @@ async function sendTiles() {
     }
 }
 
-watch(networkSlider, (value) => {
+//Watch for changes in network slider
+watch(networkSlider, async (value) => {
   if (value == 1) {
     network.value = "3G";
   } else if (value == 2) {
@@ -73,8 +89,18 @@ watch(networkSlider, (value) => {
     network.value = "5G";
   }
 
-  socket.send("?" + network.value);
+  console.log("Network changed to " + network.value);
+  
+  await sendNetwork();
 });
+
+async function sendNetwork() {
+  console.log("Sending network change to server");
+
+  socket.send("?" + network.value);
+  socket.send('[{"x":0,"y":0,"landscape":"' + 
+  tiles.value[0][0].landscape + '","building":"' + tiles.value[0][0].building + '"}]');
+}
 
 //On mouse position change, update mouse icon position
 window.addEventListener("mousemove", (e) => {
@@ -154,24 +180,9 @@ socket.addEventListener("message", (event) => {
   }
 });
 
-//Upload map-data
 async function uploadMapData() {
   //Click on hidden file input
-  const fileInput = document.querySelector("#file-input");
-  fileInput.click();
-
-  //When file is selected, set tiles to file data
-  fileInput.addEventListener("change", async (e) => {
-    file.value = e.target.files[0];
-    const reader = new FileReader();
-    reader.readAsText(file.value, "UTF-8");
-    reader.onload = async (e) => {
-      const mapData = JSON.parse(e.target.result);
-      tiles.value = mapData;
-      console.log("Map data uploaded");
-      await sendTiles();
-    };
-  });
+  fileInput.value.click();
 }
 
 function paintBucket(x, y, originalLandscape) {
@@ -249,11 +260,11 @@ function paintBucket(x, y, originalLandscape) {
         Upload map
         <font-awesome-icon icon="upload" />
         <input 
-        type="file" 
-        id="file-input" 
-        style="display:none" 
-        ref="file"
-        accept="application/json"
+          type="file" 
+          id="file-input" 
+          style="display:none" 
+          ref="fileInput"
+          accept="application/json"
         />
       </button>
       <button @click="MapService.downloadMapData(tiles)">

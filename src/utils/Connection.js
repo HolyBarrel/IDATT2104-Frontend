@@ -1,8 +1,8 @@
-const socket = new WebSocket('ws://10.22.6.113:8765')
+const socket = new WebSocket('ws://10.24.21.220:8765')
 
 socket.onopen = () => {
   console.log('WebSocket connection established.')
-  //socket.send("?5G")
+  socket.send("?5G")
 }
 
 socket.onmessage = (event) => {
