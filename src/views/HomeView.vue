@@ -1,9 +1,9 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+import Grid from '../components/Grid.vue'
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <Grid />
   </main>
 </template>

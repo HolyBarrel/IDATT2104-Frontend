@@ -1,0 +1,21 @@
+const socket = new WebSocket('ws://10.24.21.220:8765')
+
+socket.onopen = () => {
+  console.log('WebSocket connection established.')
+  socket.send("?5G")
+}
+
+socket.onmessage = (event) => {
+  //const message = event.data
+  //console.log('Received message:', JSON.parse(message))
+}
+
+socket.onclose = () => {
+  console.log('WebSocket connection closed.')
+}
+
+socket.onerror = (error) => {
+  console.error('WebSocket connection error:', error)
+}
+
+export default socket
