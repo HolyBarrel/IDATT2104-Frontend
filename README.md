@@ -134,7 +134,18 @@ git clone https://github.com/HolyBarrel/IDATT2104-Frontend.git
 git clone git@github.com:HolyBarrel/IDATT2104-Frontend.git
 ```
 
-Etter klonasjon av Git repository eller nedlasting og dekompresjon av zip-filen med koden, kjører man klienten-applikasjon med:
+##### Kjøring av tjener
+
+Etter kloning av Git repository eller nedlasting og dekompresjon av zip-filen med koden, kjører man tjener-applikasjon med:
+
+```plaintext
+cd IDATT2104-Bacckend/backend
+cargo run
+```
+
+##### Kjøring av klient
+
+Etter kloning av Git repository eller nedlasting og dekompresjon av zip-filen med koden, kjører man klient-applikasjon med:
 
 ```plaintext
 cd IDATT2104-Frontend
@@ -142,9 +153,66 @@ npm install
 npm run dev
 ```
 
+
 ### Instruksjoner for å bruke applikasjonen
 
-fewfew
+Start med å kjøre serveren, og deretter klienten.
+
+Etter dette, åpne en nettleser på localhost:8080 for å besøke applikasjonen. (For utvikling har Chrome og Firefox Developer Edition blitt brukt).
+
+Dermed kan du utforske sandboxen for å lage ulikt terreng og sette ut ulike bygninger som forteller deg om hvordan signal sprer seg i terrenget. 
+
+Funksjonalitet for verktøymenyen i høyre hjørne av skjermen:
+
+![image](https://github.com/HolyBarrel/IDATT2104-Frontend/assets/58830226/8558c3e7-2f65-4d61-9cf2-453e55fb1f10)
+
+
+  **Endre og sette ut ulike typer terreng** 
+  
+    velg -> venstreklikk -> dra på kartet
+    
+  **Plassere ut signaltårn**
+  
+    velg -> venstreklikk
+    
+  **Plassere ut forsterker** 
+  
+    velg -> venstreklikk
+    
+  **Plassere ut signalmåler**
+  
+    velg -> venstreklikk
+    
+  **Plassere ut store mengder terreng (malebøtte)**
+  
+    velg -> venstreklikk
+    
+  **Fjerne bygninger**
+  
+    velg -> trykk på bygning som skal fjernes
+    
+  **Last opp kart**
+  
+    velg -> last opp et kart i form av en .json fil
+    
+  Her kan mappen med forhåndsdefinerte kart `/maps/[kart.json]` velges fra
+     
+  **Last ned kart**
+  
+    velg -> laster ned kartet som er tegnet som en .json-fil. Denne kan så lagres lokalt.
+    
+  
+Funskjonalitet for karttegning
+
+   **Generell ruteplassering**
+   
+     -> venstreklikk
+   
+   **Se informasjon om rute:** *viser koordinat og signalstryke*
+   
+     -> høyreklikk
+   
+ 
 
 ### Hvordan kjøre tester
 
