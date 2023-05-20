@@ -85,9 +85,17 @@ Hvis det er en endring i en rute innenfor brettet, vil endringen sendes over web
 
 ### Websocket-kommunikasjon
 
-* Websocket: En WebSocket er en kommunikasjonsprotokoll som tillater sanntidsinteraksjon mellom en klient (for eksempel en nettleser) og en server. Den skiller seg fra tradisjonelle HTTP-forespørsler ved å opprette en vedvarende toveisforbindelse mellom klienten og serveren, noe som muliggjør kontinuerlig utveksling av data uten behov for gjentatte forespørsler.
+* Websocket: En WebSocket er en kommunikasjonsprotokoll som tillater sanntidsinteraksjon mellom en klient (for eksempel en nettleser) og en tjener. Den skiller seg fra tradisjonelle HTTP-forespørsler ved å opprette en vedvarende toveisforbindelse mellom klienten og tjeneren, noe som muliggjør kontinuerlig utveksling av data uten behov for gjentatte forespørsler.
 
-For å etablere en websocket kommunikasjonstjener bruker TNSS et bibliotek kalt Tungstenite. 
+For å etablere WebSocket-kommunikasjon bruker klienten biblioteket "ws" i Node.js, mens tjeneren benytter seg av et tredjepartsbibliotek kalt "Tungstenite". Disse bibliotekene er valgt på grunn av deres enkelhet og pålitelighet når det gjelder sanntidskommunikasjon.
+
+Biblioteket "ws" i Node.js gir en enkel og effektiv måte å opprette WebSocket-forbindelser på klientens side. Det tilbyr funksjonalitet som gjør det mulig å sende og motta sanntidsdata på en pålitelig måte.
+
+På serverens side benytter "Tungstenite" seg av Rusts TCP-baserte strukturer fra nettbiblioteket. Dette gir muligheten til å implementere flertrådede systemer, der tjeneren kan håndtere flere klienter samtidig. Tungstenite er spesielt designet for å støtte delt programkjøring i Rust ved å utnytte trådstrukturen.
+
+Ved å bruke "Tungstenite" får utviklere muligheten til å implementere effektive og stabile flertrådede løsninger for WebSocket-kommunikasjon. Dette gjør det mulig å skalere systemet og håndtere flere samtidige klienter på en effektiv måte.
+
+Samlet sett gir kombinasjonen av "ws" og "Tungstenite" en pålitelig og enkel løsning for å oppnå sanntidskommunikasjon i systemet. Ved å dra nytte av disse bibliotekene kan man opprette et system som kan håndtere flere klienter samtidig og muliggjør effektiv utveksling av data i sanntid.
 
 
 ## Installasjonsinstruksjoner
