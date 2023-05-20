@@ -1,169 +1,169 @@
 .grid {
-    width: 100vw;
-    height: 100vh;
-    overflow-x: scroll;
-    overflow-y: scroll;
-    display: flex;
-    flex-direction: row;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: scroll;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: row;
 }
 
 .mouse-icon {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 25px;
-    height: 25px;
-    background-color: #fff;
-    border-radius: 50%;
-    border: 1px solid #000;
-    z-index: 100;
-    pointer-events: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 12px;
-    opacity: 0.5;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 25px;
+  height: 25px;
+  background-color: #fff;
+  border-radius: 50%;
+  border: 1px solid #000;
+  z-index: 100;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  opacity: 0.5;
 }
 
 .menu {
-    position: fixed;
-    z-index: 10;
-    top: 0;
-    right: -185px;
-    width: 200px;
-    height: auto;
-    background-color: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    color: #fff;
-    padding: 10px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border-radius: 0 0 0 10px;
-    transition: 0.2s;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  right: -185px;
+  width: 200px;
+  height: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #fff;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 0 0 0 10px;
+  transition: 0.2s;
 }
 
 .menu:hover {
-    right: 0;
+  right: 0;
 }
 
 .menu .menu-handle {
-    position: absolute;
-    top: 0px;
-    left: -50px;
-    background-color: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 0px 0px 0 10px;
-    font-size: 24px;
+  position: absolute;
+  top: 0px;
+  left: -50px;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0px 0px 0 10px;
+  font-size: 24px;
 }
 
 .menu .menu-item {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .menu .menu-item select {
-    width: 100%;
-    height: 30px;
-    border-radius: 5px;
-    border: none;
-    background-color: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    color: #fff;
-    padding: 5px;
-    box-sizing: border-box;
-    cursor: pointer;
+  width: 100%;
+  height: 30px;
+  border-radius: 5px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #fff;
+  padding: 5px;
+  box-sizing: border-box;
+  cursor: pointer;
 }
 
 .menu .menu-item button {
-    width: 100%;
-    height: 30px;
-    border-radius: 5px;
-    border: none;
-    background-color: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    color: #fff;
-    padding: 5px;
-    box-sizing: border-box;
-    margin-bottom: 10px;
-    cursor: pointer;
+  width: 100%;
+  height: 30px;
+  border-radius: 5px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #fff;
+  padding: 5px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  cursor: pointer;
 }
 
 .menu .menu-item button:hover {
-    background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .menu .menu-item .network-slider {
-    width: 100%;
-    border-radius: 5px;
-    border: none;
-    background-color: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    color: #fff;
-    padding: 5px;
-    box-sizing: border-box;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #fff;
+  padding: 5px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
 }
 
 .welcome-box {
-    position: fixed;
-    z-index: 1000;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: default;
-    background-color: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: default;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
 }
 
 .welcome-box .welcome-box-content {
-    max-width: 800px;
-    width: 80vw;
-    background-color: #fff;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
-    padding: 20px;
-    box-sizing: border-box;
-    cursor: pointer;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-    transition: 0.2s;
+  max-width: 800px;
+  width: 80vw;
+  background-color: #fff;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 20px;
+  box-sizing: border-box;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  transition: 0.2s;
 }
 
 .welcome-box .welcome-box-content:hover {
-    transform: scale(1.02);
-    opacity: 0.8;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  transform: scale(1.02);
+  opacity: 0.8;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
 }
 
 .welcome-box .welcome-box-content h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 
 .welcome-box .welcome-box-content p {
-    font-size: 16px;
-    margin-bottom: 20px;
-    text-align: left;
+  font-size: 16px;
+  margin-bottom: 20px;
+  text-align: left;
 }
