@@ -205,7 +205,7 @@ Dermed kan du utforske sandboxen for å lage ulikt terreng og sette ut ulike byg
     velg -> laster ned kartet som er tegnet som en .json-fil. Denne kan så lagres lokalt.
     
   
-### Funskjonalitet for karttegning
+### Funksjonalitet for karttegning
 
    **Generell ruteplassering**
    
