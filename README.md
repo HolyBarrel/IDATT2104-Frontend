@@ -230,6 +230,14 @@ Dermed kan du utforske sandboxen for å lage ulikt terreng og sette ut ulike byg
 
 *Flytdiagrammet representerer tiltenkt flyt for TNSS*
 
+## Lenker til kjøringer av CICD
+
+### Backend
+  * Link: https://github.com/HolyBarrel/IDATT2104-Backend/actions/runs/5031479274/jobs/9024575497
+
+### Frontend
+  * Link: https://github.com/HolyBarrel/IDATT2104-Frontend/actions/runs/5031449352/jobs/9024531116
+
 ## Eksterne avhengigheter
 
 * Tungstenite: [https://docs.rs/tungstenite/latest/tungstenite/](https://docs.rs/tungstenite/latest/tungstenite/) 
