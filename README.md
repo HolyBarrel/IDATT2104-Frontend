@@ -173,7 +173,8 @@ Dermed kan du utforske sandboxen for å lage ulikt terreng og sette ut ulike byg
 
 Funksjonalitet for verktøymenyen i høyre hjørne av skjermen:
 
-![image](https://github.com/HolyBarrel/IDATT2104-Frontend/assets/58830226/8558c3e7-2f65-4d61-9cf2-453e55fb1f10)
+
+![image](https://github.com/HolyBarrel/IDATT2104-Frontend/assets/58830226/2c6be7d0-eb87-4134-a018-30951406c4e9)
 
 
   **Endre og sette ut ulike typer terreng** 
@@ -221,11 +222,13 @@ Funskjonalitet for karttegning
    
      -> høyreklikk i kart
     
-   ![image (1)](https://github.com/HolyBarrel/IDATT2104-Frontend/assets/58830226/bc78af34-6690-4fcb-a028-fd2b9dc17031)
-   
+  
+   ![image (1)](https://github.com/HolyBarrel/IDATT2104-Frontend/assets/58830226/d3896144-064b-4120-b9b2-e7a555fb81be)
+
  
 ### Applikasjonsflyt
 
-![flowchart](https://github.com/HolyBarrel/IDATT2104-Frontend/assets/58830226/f30ef95d-451c-4640-9c0c-be11dadf1005)
+![flowchart](https://github.com/HolyBarrel/IDATT2104-Frontend/assets/58830226/a749011a-0069-4c77-bf3a-9fd157eb70c4)
+
 
 *Flytdiagrammet representerer tiltenkt flyt for TNSS*
