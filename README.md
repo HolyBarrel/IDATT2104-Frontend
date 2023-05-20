@@ -79,6 +79,7 @@ Hvis det er en endring i en rute innenfor brettet, vil endringen sendes over web
 
 ### Websocket-kommunikasjon
 
+
 ### Eksterne avhengigheter
 
 * Tungstenite: [https://docs.rs/tungstenite/latest/tungstenite/](https://docs.rs/tungstenite/latest/tungstenite/) 
@@ -96,7 +97,7 @@ Hvis det er en endring i en rute innenfor brettet, vil endringen sendes over web
 
 #### Tjeneren:
 
-For å kjøre tjener applikasjon må man installere “Rust-compiler”, “Cargo”. Nedlasting linken: [https://www.rust-lang.org/learn/get-started](https://www.rust-lang.org/learn/get-started)
+For å kjøre tjener applikasjon må man installere “Rust-compiler”, “Cargo”. Nedlastings-link: [https://www.rust-lang.org/learn/get-started](https://www.rust-lang.org/learn/get-started)
 
 #### HTTPS:
 
@@ -143,6 +144,15 @@ cd IDATT2104-Backend/backend
 cargo run
 ```
 
+### Hvordan kjøre tester
+
+Man kan kjøre tester i tjeneren ved kommando:
+
+```plaintext
+cargo test
+```
+
+
 ##### Kjøring av klient
 
 Etter kloning av Git repository eller nedlasting og dekompresjon av zip-filen med koden, kjører man klient-applikasjon med:
@@ -152,7 +162,6 @@ cd IDATT2104-Frontend
 npm install
 npm run dev
 ```
-
 
 ### Instruksjoner for å bruke applikasjonen
 
@@ -206,18 +215,15 @@ Funskjonalitet for karttegning
 
    **Generell ruteplassering**
    
-     -> venstreklikk
+     -> venstreklikk i kart
    
    **Se informasjon om rute:** *viser koordinat og signalstryke*
    
-     -> høyreklikk
+     -> høyreklikk i kart
    
  
+### Applikasjonsflyt
 
-### Hvordan kjøre tester
+![flowchart](https://github.com/HolyBarrel/IDATT2104-Frontend/assets/58830226/f30ef95d-451c-4640-9c0c-be11dadf1005)
 
-Man kan kjøre tester i tjeneren ved kommando:
-
-```plaintext
-cargo test
-```
+*Flytdiagrammet representerer tiltenkt flyt for TNSS*
