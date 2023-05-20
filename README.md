@@ -97,13 +97,11 @@ Ved å bruke "Tungstenite" får utviklere muligheten til å implementere effekti
 
 Samlet sett gir kombinasjonen av "ws" og "Tungstenite" en pålitelig og enkel løsning for å oppnå sanntidskommunikasjon i systemet. Ved å dra nytte av disse bibliotekene kan man opprette et system som kan håndtere flere klienter samtidig og muliggjør effektiv utveksling av data i sanntid.
 
-Tungstenite har en spesiell funksjonalitet der hver "Message"-objekt håndteres i sin egen tråd. Dette betyr at det kan oppstå situasjoner der variabler som brukes i flere meldinger, for eksempel lister av data eller antenner, må sikres med en lås for å unngå konkurranse om ressursene.
+Tungstenite har en spesiell funksjonalitet der hver "Message"-objekt håndteres i sin egen tråd. Dette betyr at det kan oppstå situasjoner der variabler som brukes i flere meldinger, for eksempel lister av "towers" eller "extenders", må sikres med en lås for å unngå konkurranse om ressursene.
 
-For å takle dette scenarioet bruker Tungstenite ofte "RWLock", som står for "Read-Write Locks", for å sikre trådsikkerheten. "RWLock" er et Rust-objekt som gir mulighet for tråder å ta en lås uten å vente hvis de bare ønsker å lese innholdet til låsen. Imidlertid må tråder vente hvis de ønsker å endre innholdet til låsen, da de ikke kan ha samtidig skriveadgang.
+For å takle dette scenarioet bruker systemet "RWLock", som står for "Read-Write Locks", for å sikre trådsikkerheten. "RWLock" er et Rust-objekt som gir mulighet for tråder å ta en lås uten å vente hvis de bare ønsker å lese innholdet til låsen. Imidlertid må tråder vente hvis de ønsker å endre innholdet til låsen, da de ikke kan ha samtidig skriveadgang.
 
-Ved å bruke "RWLock" kan Tungstenite effektivt administrere tilgangen til felles ressurser i flertrådede miljøer. Låsemekanismen sikrer at kun en tråd om gangen kan skrive til ressursen, mens flere tråder kan lese samtidig uten å påvirke hverandre. Dette bidrar til å opprettholde integriteten til dataene og forhindrer potensielle datakonflikter og feil i systemet.
-
-Denne funksjonaliteten gir en balanse mellom ytelse og trådsikkerhet i Tungstenite-biblioteket, og muliggjør effektiv behandling av meldinger i parallell uten å kompromittere integriteten til fellesdataene.
+Ved å bruke "RWLock" kan tjeneren effektivt administrere tilgangen til felles ressurser i flertrådede miljøer. Låsemekanismen sikrer at kun en tråd om gangen kan skrive til ressursen, mens flere tråder kan lese samtidig uten å påvirke hverandre. Dette bidrar til å opprettholde integriteten til dataene og forhindrer potensielle datakonflikter og feil i systemet.
 
 
 ## Installasjonsinstruksjoner
