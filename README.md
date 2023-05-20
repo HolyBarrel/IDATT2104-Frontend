@@ -77,18 +77,20 @@ For å ta hensyn til diagonale avstander, sammenlignes koordinatene til den bes�
 
 Hvis det er en endring i en rute innenfor brettet, vil endringen sendes over websocket.
 
+### Websocket-kommunikasjon
+
 ### Eksterne avhengigheter
 
 * Tungstenite: [https://docs.rs/tungstenite/latest/tungstenite/](https://docs.rs/tungstenite/latest/tungstenite/) 
-* Tungstenite er et enkelt WebSocket-bibliotek som støtter bruk av “full-duplex”-kommunikasjon mellom klienter og server. Biblioteket brukes for å åpne en port som lytter etter WebSocket-forespørsler fra klienter og etablerer en kommunikasjonskanal.
+  * Tungstenite er et enkelt WebSocket-bibliotek som støtter bruk av “full-duplex”-kommunikasjon mellom klienter og server. Biblioteket brukes for å åpne en port som lytter etter WebSocket-forespørsler fra klienter og etablerer en kommunikasjonskanal.
 * Serde: [https://serde.rs/](https://serde.rs/)
-* Serde er et rammeverk som brukes til effektiv serialisering og deserialisering av Rust-datastrukturer. I TNSS brukes Serde til å serialisere datastrukturen "Node" og konverterer dette til et JSON-objekt.
+  * Serde er et rammeverk som brukes til effektiv serialisering og deserialisering av Rust-datastrukturer. I TNSS brukes Serde til å serialisere datastrukturen "Node" og konverterer dette til et JSON-objekt.
 * Serde\_json: [https://docs.rs/serde_json/latest/serde_json/](https://docs.rs/serde_json/latest/serde_json/)
-* Serde\_json er en utvidelsesbibliotek for Serde som brukes for a transformere serialiserte objekter til JSON-objekter. JSON-objektene bidrar til sikker og effektiv kommunikasjon mellom server og klient. 
+  * Serde\_json er en utvidelsesbibliotek for Serde som brukes for a transformere serialiserte objekter til JSON-objekter. JSON-objektene bidrar til sikker og effektiv kommunikasjon mellom server og klient. 
 * Queues: [https://docs.rs/queues/latest/queues/](https://docs.rs/queues/latest/queues/)
-* Queues gir en rekke effektive FIFO-kødatastrukturer. Disse er alle implementert i tillegg til rusts Vector-type. Køer brukes i algoritmen som sprer signalet utover kartet.
+  * Queues gir en rekke effektive FIFO-kødatastrukturer. Disse er alle implementert i tillegg til rusts Vector-type. Køer brukes i algoritmen som sprer signalet utover kartet.
 * Fontawesome: [https://fontawesome.com/](https://fontawesome.com/)
-* Font Awesome er et ikonbibliotek. Den er brukt for å generere SVG-ikoner som forbedrer UX av applikasjon.
+  * Font Awesome er et ikonbibliotek. Den er brukt for å generere SVG-ikoner som forbedrer UX av applikasjon.
 
 ### Installasjonsinstruksjoner
 
