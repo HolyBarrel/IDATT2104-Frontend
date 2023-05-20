@@ -144,7 +144,7 @@ cd IDATT2104-Backend/backend
 cargo run
 ```
 
-### Hvordan kjøre tester
+###### Hvordan kjøre tester
 
 Man kan kjøre tester i tjeneren ved kommando:
 
@@ -171,7 +171,7 @@ Etter dette, åpne en nettleser på localhost:8080 for å besøke applikasjonen.
 
 Dermed kan du utforske sandboxen for å lage ulikt terreng og sette ut ulike bygninger som forteller deg om hvordan signal sprer seg i terrenget. 
 
-Funksjonalitet for verktøymenyen i høyre hjørne av skjermen:
+#### Funksjonalitet for verktøymenyen i høyre hjørne av skjermen:
 
 
 ![image](https://github.com/HolyBarrel/IDATT2104-Frontend/assets/58830226/2c6be7d0-eb87-4134-a018-30951406c4e9)
@@ -212,7 +212,7 @@ Funksjonalitet for verktøymenyen i høyre hjørne av skjermen:
     velg -> laster ned kartet som er tegnet som en .json-fil. Denne kan så lagres lokalt.
     
   
-Funskjonalitet for karttegning
+#### Funskjonalitet for karttegning
 
    **Generell ruteplassering**
    
