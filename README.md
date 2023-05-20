@@ -18,8 +18,9 @@ Med den kontinuerlige utviklingen av kommunikasjonsteknologi, spesielt innen tr�
     * 4G - 2km
     * 5G - 500m
    *  Dette er basert på følgende kilder:
-      * [Verizon](https://onlinemarkdowneditor.dev/collaboration/#doce3e48e7d2e)
+      * [Verizon](https://www.verizon.com/about/news/how-far-does-5g-reach)
       * [Dgtl Infra](https://dgtlinfra.com/cell-tower-range-how-far-reach/)
+      * [Digitaltrends](https://www.digitaltrends.com/mobile/5g-vs-4g/#dt-heading-5g-vs-4g-coverage)
 
 
 * Visualisere signalspredning og styrke fra signaltårn
