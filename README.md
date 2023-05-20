@@ -40,13 +40,14 @@ Med den kontinuerlige utviklingen av kommunikasjonsteknologi, spesielt innen tr�
 TNSS er implementert med tiltenkt funksjonalitet. Under følger en liste av potensielle utvidelser, som eksempler på funksjonalitet som kan implementeres ved fremtidig arbeid:
 
 * Innlasting av signalspredning for ulike bygninger i ulike tråder
-* Kan gi en mer dynamisk effekt av oppdatering av signaler i kartet.
+  * Kan gi en mer dynamisk effekt av oppdatering av signaler i kartet.
 * Meter over havet 
-* Kunne angitt ulike høydeforskjeller i fjellområder. Nåværende funksjonalitet støtter om signalkilder er på et fjell eller ikke.
+  * Kunne angitt ulike høydeforskjeller i fjellområder. Nåværende funksjonalitet støtter om signalkilder er på et fjell eller ikke.
 * Flere terreng
-* Brukeren kunne for eksempel angitt og lagd et eget terreng.
+  * Flere terreng ville muliggjort et mer realistisk kart.
+  * Brukeren kunne for eksempel angitt og lagd et eget terreng.
 * Ulike værtyper
-* Faktorer som regn, snø osv påvirker signalet i realiteten til en viss grad.
+  * Faktorer som regn, snø osv påvirker signalet i realiteten til en viss grad.
 
 ### Signalspredning i terreng
 
