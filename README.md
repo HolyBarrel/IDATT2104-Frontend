@@ -139,7 +139,7 @@ git clone git@github.com:HolyBarrel/IDATT2104-Frontend.git
 Etter kloning av Git repository eller nedlasting og dekompresjon av zip-filen med koden, kjører man tjener-applikasjon med:
 
 ```plaintext
-cd IDATT2104-Bacckend/backend
+cd IDATT2104-Backend/backend
 cargo run
 ```
 
