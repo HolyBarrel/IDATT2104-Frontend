@@ -9,25 +9,31 @@ Med den kontinuerlige utviklingen av kommunikasjonsteknologi, spesielt innen tr�
 ### Implementert funksjonalitet
 
 * Sandbox for å designe terreng på kartet
-* Vi har utviklet en "sandbox" som gir brukeren muligheten til å skape og tilpasse sitt helt eget terreng. Det er også mulig å laste ned kartet som en JSON-fil, som man kan dele med andre. Alle oppdateringer av terrenget blir sendt til serveren, hvor eventuelle nye beregninger for signal-spredningen blir utført.
-* "Sandboxen" er delt inn i felt ("tiles"), hvor hvert felt representerer 40x40 meter i virkeligheten. Alle beregningene samsvarer med hvordan det faktisk ville ha vært i den virkelige verden.
+  * Vi har utviklet en "sandbox" som gir brukeren muligheten til å skape og tilpasse sitt helt eget terreng. Det er også mulig å laste ned kartet som en JSON-fil, som man kan dele med andre. Alle oppdateringer av terrenget blir sendt til serveren, hvor eventuelle nye beregninger for signal-spredningen blir utført.
+  * "Sandboxen" er delt inn i felt ("tiles"), hvor hvert felt representerer 40x40 meter i virkeligheten. Alle beregningene samsvarer med hvordan det faktisk ville ha vært i den virkelige verden.
+
 * Definere signalstyrke for signaltårn
-* Det er mulig å endre hvilket nettverk signaltårnene skal sende ut. Man kan bytte mellom 3G, 4G og 5G. Hvordan signalstyrken sprer seg for hver av disse nettverkene samsvarer med faktiske data. Det finnes varierte kilder til spredningen for hvert av nettverkene, men vi har tatt utgangspunkt i følgende maks-distanser for hver av dem:
-* 3G - 10km
-* 4G - 2km
-* 5G - 500m
-* Dette er basert på følgende kilder:
-* [Verizon](https://onlinemarkdowneditor.dev/collaboration/#doce3e48e7d2e)
-* [Dgtl Infra](https://dgtlinfra.com/cell-tower-range-how-far-reach/)
+  * Det er mulig å endre hvilket nettverk signaltårnene skal sende ut. Man kan bytte mellom 3G, 4G og 5G. Hvordan signalstyrken sprer seg for hver av disse nettverkene samsvarer med faktiske data. Det finnes varierte kilder til spredningen for hvert av nettverkene, men vi har tatt utgangspunkt i følgende maks-distanser for hver av dem:
+    * 3G - 10km
+    * 4G - 2km
+    * 5G - 500m
+   *  Dette er basert på følgende kilder:
+      * [Verizon](https://onlinemarkdowneditor.dev/collaboration/#doce3e48e7d2e)
+      * [Dgtl Infra](https://dgtlinfra.com/cell-tower-range-how-far-reach/)
+
+
 * Visualisere signalspredning og styrke fra signaltårn
-* Signalspredning blir visualisert på terrenget. Som bruker vil du kunne observere hvordan signalene dynamisk endrer og tilpasser seg basert på terrenget. Hver terrengtype påvirker signalene forskjellig. For eksempel er hav det enkleste terrenget for signalene å navigere gjennom, og vil derfor være det terrenget som reduserer signalstyrken minst. Fjell derimot, vil redusere signalstyrken relativt raskt.
-* Hvis man derimot plasserer et signal-tårn på toppen av et fjell, vil signalene kunne spre seg langt over fjellene.
+  * Signalspredning blir visualisert på terrenget. Som bruker vil du kunne observere hvordan signalene dynamisk endrer og tilpasser seg basert på terrenget. Hver terrengtype påvirker signalene forskjellig. For eksempel er hav det enkleste terrenget for signalene å navigere gjennom, og vil derfor være det terrenget som reduserer signalstyrken minst. Fjell derimot, vil redusere signalstyrken relativt raskt.
+  * Hvis man derimot plasserer et signal-tårn på toppen av et fjell, vil signalene kunne spre seg langt over fjellene.
+  
+  
 * Visualisere videresendt signal fra signalforsterkere
-* Det finnes to måter å sende signaler på i TNSS:
-* Signaltårn
-* Signalforsterkere
-* Signaltårn vil generere nye signaler ut av ingenting, som den vil sende utover terrenget. Man kan velge mellom å sende 3G-, 4G- eller 5G-signaler.
-* signalforsterkere genererer ikke nye signaler, men videresender og forsterker signalene som den får inn. Altså dersom en signalforsterker ikke får inn noen signaler fra et signaltårn eller en annen signalforsterker, så gjør den ingenting. Signalforsterkere forsterker signalene som den får inn med 50 prosentpoeng, og videresender signalene utover terrenget.
+  * Det finnes to måter å sende signaler på i TNSS:
+    * Signaltårn
+    * Signalforsterkere
+  * Signaltårn vil generere nye signaler ut av ingenting, som den vil sende utover terrenget. Man kan velge mellom å sende 3G-, 4G- eller 5G-signaler.
+  * Signalforsterkere genererer ikke nye signaler, men videresender og forsterker signalene som den får inn. Altså dersom en signalforsterker ikke får inn noen signaler fra et signaltårn eller en annen signalforsterker, så gjør den ingenting.   
+  * Signalforsterkere forsterker signalene som den får inn med 50 prosentpoeng, og videresender signalene utover terrenget.
 
 ### Fremtidig arbeid
 
