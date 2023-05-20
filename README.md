@@ -93,7 +93,7 @@ Hvis det er en endring i en rute innenfor brettet, vil endringen sendes over web
 * Fontawesome: [https://fontawesome.com/](https://fontawesome.com/)
   * Font Awesome er et ikonbibliotek. Den er brukt for å generere SVG-ikoner som forbedrer UX av applikasjon.
 
-### Installasjonsinstruksjoner
+## Installasjonsinstruksjoner
 
 #### Tjeneren:
 
@@ -144,7 +144,7 @@ cd IDATT2104-Backend/backend
 cargo run
 ```
 
-### Hvordan kjøre tester
+###### Hvordan kjøre tester
 
 Man kan kjøre tester i tjeneren ved kommando:
 
@@ -163,7 +163,7 @@ npm install
 npm run dev
 ```
 
-### Instruksjoner for å bruke applikasjonen
+## Instruksjoner for å bruke applikasjonen
 
 Start med å kjøre serveren, og deretter klienten.
 
@@ -171,7 +171,7 @@ Etter dette, åpne en nettleser på localhost:8080 for å besøke applikasjonen.
 
 Dermed kan du utforske sandboxen for å lage ulikt terreng og sette ut ulike bygninger som forteller deg om hvordan signal sprer seg i terrenget. 
 
-Funksjonalitet for verktøymenyen i høyre hjørne av skjermen:
+### Funksjonalitet for verktøymenyen i høyre hjørne av skjermen:
 
 
 ![image](https://github.com/HolyBarrel/IDATT2104-Frontend/assets/58830226/2c6be7d0-eb87-4134-a018-30951406c4e9)
@@ -212,7 +212,7 @@ Funksjonalitet for verktøymenyen i høyre hjørne av skjermen:
     velg -> laster ned kartet som er tegnet som en .json-fil. Denne kan så lagres lokalt.
     
   
-Funskjonalitet for karttegning
+### Funskjonalitet for karttegning
 
    **Generell ruteplassering**
    
