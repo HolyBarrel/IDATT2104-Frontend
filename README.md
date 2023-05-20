@@ -220,6 +220,8 @@ Funskjonalitet for karttegning
    **Se informasjon om rute:** *viser koordinat og signalstryke*
    
      -> høyreklikk i kart
+    
+   ![image (1)](https://github.com/HolyBarrel/IDATT2104-Frontend/assets/58830226/bc78af34-6690-4fcb-a028-fd2b9dc17031)
    
  
 ### Applikasjonsflyt
