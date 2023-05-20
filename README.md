@@ -87,7 +87,7 @@ Hvis det er en endring i en rute innenfor brettet, vil endringen sendes over web
 
 * Websocket: En WebSocket er en kommunikasjonsprotokoll som tillater sanntidsinteraksjon mellom en klient (for eksempel en nettleser) og en server. Den skiller seg fra tradisjonelle HTTP-forespørsler ved å opprette en vedvarende toveisforbindelse mellom klienten og serveren, noe som muliggjør kontinuerlig utveksling av data uten behov for gjentatte forespørsler.
 
-For å etablere en websocket kommunikasjonstjener brukeren en bibliotek kalt Tungstenite. 
+For å etablere en websocket kommunikasjonstjener bruker TNSS et bibliotek kalt Tungstenite. 
 
 
 ## Installasjonsinstruksjoner
