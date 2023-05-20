@@ -6,6 +6,7 @@ Terrain Network Signal Simulation (TNSS) er en applikasjon med formål om å lø
 
 Med den kontinuerlige utviklingen av kommunikasjonsteknologi, spesielt innen trådløs teknologi, har forståelsen av hvordan fysiske omgivelser påvirker signalstyrken blitt avgjørende. TNSS har som mål å gi svar på disse utfordringene på en intuitiv og brukervennlig måte.
 
+
 ### Implementert funksjonalitet
 
 * Sandbox for å designe terreng på kartet
@@ -36,6 +37,8 @@ Med den kontinuerlige utviklingen av kommunikasjonsteknologi, spesielt innen tr�
   * Signalforsterkere genererer ikke nye signaler, men videresender og forsterker signalene som den får inn. Altså dersom en signalforsterker ikke får inn noen signaler fra et signaltårn eller en annen signalforsterker, så gjør den ingenting.   
   * Signalforsterkere forsterker signalene som den får inn med 50 prosentpoeng, og videresender signalene utover terrenget.
 
+
+
 ### Fremtidig arbeid
 
 TNSS er implementert med tiltenkt funksjonalitet. Under følger en liste av potensielle utvidelser, som eksempler på funksjonalitet som kan implementeres ved fremtidig arbeid:
@@ -49,6 +52,8 @@ TNSS er implementert med tiltenkt funksjonalitet. Under følger en liste av pote
   * Brukeren kunne for eksempel angitt og lagd et eget terreng.
 * Ulike værtyper
   * Faktorer som regn, snø osv påvirker signalet i realiteten til en viss grad.
+
+
 
 ### Signalspredning i terreng
 
@@ -77,21 +82,9 @@ For å ta hensyn til diagonale avstander, sammenlignes koordinatene til den bes�
 
 Hvis det er en endring i en rute innenfor brettet, vil endringen sendes over websocket.
 
+
 ### Websocket-kommunikasjon
 
-
-### Eksterne avhengigheter
-
-* Tungstenite: [https://docs.rs/tungstenite/latest/tungstenite/](https://docs.rs/tungstenite/latest/tungstenite/) 
-  * Tungstenite er et enkelt WebSocket-bibliotek som støtter bruk av “full-duplex”-kommunikasjon mellom klienter og server. Biblioteket brukes for å åpne en port som lytter etter WebSocket-forespørsler fra klienter og etablerer en kommunikasjonskanal.
-* Serde: [https://serde.rs/](https://serde.rs/)
-  * Serde er et rammeverk som brukes til effektiv serialisering og deserialisering av Rust-datastrukturer. I TNSS brukes Serde til å serialisere datastrukturen "Node" og konverterer dette til et JSON-objekt.
-* Serde\_json: [https://docs.rs/serde_json/latest/serde_json/](https://docs.rs/serde_json/latest/serde_json/)
-  * Serde\_json er en utvidelsesbibliotek for Serde som brukes for a transformere serialiserte objekter til JSON-objekter. JSON-objektene bidrar til sikker og effektiv kommunikasjon mellom server og klient. 
-* Queues: [https://docs.rs/queues/latest/queues/](https://docs.rs/queues/latest/queues/)
-  * Queues gir en rekke effektive FIFO-kødatastrukturer. Disse er alle implementert i tillegg til rusts Vector-type. Køer brukes i algoritmen som sprer signalet utover kartet.
-* Fontawesome: [https://fontawesome.com/](https://fontawesome.com/)
-  * Font Awesome er et ikonbibliotek. Den er brukt for å generere SVG-ikoner som forbedrer UX av applikasjon.
 
 ## Installasjonsinstruksjoner
 
@@ -232,3 +225,16 @@ Dermed kan du utforske sandboxen for å lage ulikt terreng og sette ut ulike byg
 
 
 *Flytdiagrammet representerer tiltenkt flyt for TNSS*
+
+## Eksterne avhengigheter
+
+* Tungstenite: [https://docs.rs/tungstenite/latest/tungstenite/](https://docs.rs/tungstenite/latest/tungstenite/) 
+  * Tungstenite er et enkelt WebSocket-bibliotek som støtter bruk av “full-duplex”-kommunikasjon mellom klienter og server. Biblioteket brukes for å åpne en port som lytter etter WebSocket-forespørsler fra klienter og etablerer en kommunikasjonskanal.
+* Serde: [https://serde.rs/](https://serde.rs/)
+  * Serde er et rammeverk som brukes til effektiv serialisering og deserialisering av Rust-datastrukturer. I TNSS brukes Serde til å serialisere datastrukturen "Node" og konverterer dette til et JSON-objekt.
+* Serde\_json: [https://docs.rs/serde_json/latest/serde_json/](https://docs.rs/serde_json/latest/serde_json/)
+  * Serde\_json er en utvidelsesbibliotek for Serde som brukes for a transformere serialiserte objekter til JSON-objekter. JSON-objektene bidrar til sikker og effektiv kommunikasjon mellom server og klient. 
+* Queues: [https://docs.rs/queues/latest/queues/](https://docs.rs/queues/latest/queues/)
+  * Queues gir en rekke effektive FIFO-kødatastrukturer. Disse er alle implementert i tillegg til rusts Vector-type. Køer brukes i algoritmen som sprer signalet utover kartet.
+* Fontawesome: [https://fontawesome.com/](https://fontawesome.com/)
+  * Font Awesome er et ikonbibliotek. Den er brukt for å generere SVG-ikoner som forbedrer UX av applikasjon.
